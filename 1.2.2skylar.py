@@ -58,12 +58,7 @@ def countdown():
     if timer <= 0:
         counter.write("Time's Up", font=font_setup)
         timer_up = True
-        if timer <= 0:
-            counter.write("Time's Up", font=font_setup)
-            timer_up = True
-            manage_leaderboard()
-        else:
-
+        manage_leaderboard()
     else:
         counter.write("Timer: " + str(timer), font=font_setup)
         timer -= 1
@@ -74,7 +69,7 @@ def manage_leaderboard():
   global leader_scores_list
   global leader_names_list
   global score
-  global spot
+  global fruit
 
   # load all the leaderboard records into the lists
   lb.load_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list)
@@ -82,10 +77,10 @@ def manage_leaderboard():
   # TODO
   if (len(leader_scores_list) < 5 or score > leader_scores_list[4]):
     lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
-    lb.draw_leaderboard(leader_names_list, leader_scores_list, True, spot, score)
+    lb.draw_leaderboard(leader_names_list, leader_scores_list, True, fruit, score)
 
   else:
-    lb.draw_leaderboard(leader_names_list, leader_scores_list, False, spot, score)
+    lb.draw_leaderboard(leader_names_list, leader_scores_list, False, fruit, score)
 
 
 
